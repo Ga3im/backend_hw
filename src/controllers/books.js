@@ -21,14 +21,14 @@ const createBook = (req, res)=>{
 
 const updateBook = (req, res)=>{
     const { book_id } = req.params;
-    return Book.findById(book_id, {...req.body}).then(
+    return Book.findByIdAndUpdate(book_id, {...req.body}).then(
         (book)=> res.status(200).send(book))
         .catch(e => res.status(500).send(e.message))
 }
 
 const deleteBook = (req, res)=>{
     const { book_id } = req.params;
-    return Book.findById(book_id).then(
+    return Book.findByIdAndDelete(book_id).then(
         ()=> res.status(200).send('Книга успешно удалена'))
         .catch(e => res.status(500).send(e.message))
 }
